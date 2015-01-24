@@ -15,6 +15,8 @@ public class IcebergController : MonoBehaviour {
 	
 	private float maxX = 10f;
 	private float minX = -10f;
+
+	private ArrayList collectedObjects = new ArrayList();
 	
 	void Start()
 	{
@@ -38,15 +40,31 @@ public class IcebergController : MonoBehaviour {
 	
 	void moveIceberg(){
 		if (iceberg.position.x > maxX) {
-			//iceberg left the screen
-			// destroy the fishes
-			// position it to the start of the screen
-			iceberg.MovePosition (new Vector2 (minX, iceberg.position.y));
-			
-			// stop moving to apply random timer later
+			resetIcebergPosition();
+			killCollectedObjects();
+
 			shouldMove = false;
 		} else {
 			iceberg.MovePosition (new Vector2 (iceberg.position.x + acceleration, iceberg.position.y));
 		}
+	}
+
+	void killCollectedObjects()
+	{
+		while (collectedObjects.Count > 0) {
+			UnityEngine.Object obj = collectedObjects[0] as UnityEngine.Object;
+			Destroy( obj );
+			collectedObjects.RemoveAt(0);
+		}
+	}
+
+	void resetIcebergPosition()
+	{
+		iceberg.MovePosition (new Vector2 (minX, iceberg.position.y));
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		collectedObjects.Add (other);
 	}
 }
