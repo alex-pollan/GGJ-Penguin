@@ -1,8 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CoinRainController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DeathPlatformController.cs">
     <Files>
-      <File FileName="Assets\Scripts\CoinRainController.cs" Line="9" Column="2" />
+      <File FileName="Assets\Scripts\CoinRainController.cs" Line="24" Column="4" />
+      <File FileName="Assets\Scripts\PlayButtonController.cs" Line="13" Column="2" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="8" Column="3" />
+      <File FileName="Assets\Scripts\DeathPlatformController.cs" Line="11" Column="1" />
+      <File FileName="Assets\Scripts\CoinController.cs" Line="7" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

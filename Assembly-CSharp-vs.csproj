@@ -46,8 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CoinController.cs" />
+     <Compile Include="Assets\Scripts\CoinController.cs" />
      <Compile Include="Assets\Scripts\CoinRainController.cs" />
+     <Compile Include="Assets\Scripts\DeathPlatformController.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\PlayButtonController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <None Include="Assets\Sprite Pack #1 - Tap and Fly\!Readme.txt" />
  <Reference Include="UnityEngine.UI">
