@@ -62,12 +62,14 @@ public class IcebergController : MonoBehaviour {
 	{
 		iceberg.MovePosition (new Vector2 (minX, iceberg.position.y));
 	}
-	
-	void OnTriggerEnter2D(Collider2D other)
+
+	void OnCollisionEnter2D(Collision2D coll) 
 	{
-		collectedObjects.Add (other);
-		ScoreController.scoreCount++;
-		
+		if (coll.gameObject.tag == "Food") 
+		{
+			collectedObjects.Add (coll.gameObject);
+			ScoreController.scoreCount++;
+		}
 		print ("hit");
 	}
 }
