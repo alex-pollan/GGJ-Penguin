@@ -15,7 +15,7 @@ public class IcebergController : MonoBehaviour {
 	
 	private float maxX = 10f;
 	private float minX = -10f;
-
+	
 	private ArrayList collectedObjects = new ArrayList();
 	
 	void Start()
@@ -42,13 +42,13 @@ public class IcebergController : MonoBehaviour {
 		if (iceberg.position.x > maxX) {
 			resetIcebergPosition();
 			killCollectedObjects();
-
+			
 			shouldMove = false;
 		} else {
 			iceberg.MovePosition (new Vector2 (iceberg.position.x + acceleration, iceberg.position.y));
 		}
 	}
-
+	
 	void killCollectedObjects()
 	{
 		while (collectedObjects.Count > 0) {
@@ -57,14 +57,17 @@ public class IcebergController : MonoBehaviour {
 			collectedObjects.RemoveAt(0);
 		}
 	}
-
+	
 	void resetIcebergPosition()
 	{
 		iceberg.MovePosition (new Vector2 (minX, iceberg.position.y));
 	}
-
+	
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		collectedObjects.Add (other);
+		ScoreController.scoreCount++;
+		
+		print ("hit");
 	}
 }
