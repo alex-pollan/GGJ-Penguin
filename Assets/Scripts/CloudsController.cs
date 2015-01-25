@@ -8,16 +8,17 @@ public class CloudsController : MonoBehaviour {
 	
 	private bool shouldMove = true;
 	
-	private float acceleration = 0.05f;
+	private float acceleration = 0.02f;
 	
 	private float minAcceleration = 0.005f;	
-	private float maxAcceleration = 0.01f;
+	private float maxAcceleration = 0.03f;
 	
 	private float maxX = 20f;
-	private float minX = -12f;
+	private float minX = -25f;
 
 	void Start()
 	{
+		acceleration = Random.Range( minAcceleration, maxAcceleration);
 	}
 	
 	void Update () {
@@ -27,7 +28,7 @@ public class CloudsController : MonoBehaviour {
 			timer -= Time.deltaTime;
 			
 			if (timer <= 0) {
-				timer = Random.Range (1, 5);
+				timer = Random.Range (1, 2);
 				acceleration = Random.Range( minAcceleration, maxAcceleration);
 				print ( acceleration);
 				Random.seed = 1;
@@ -48,6 +49,6 @@ public class CloudsController : MonoBehaviour {
 	
 	void resetCloudsPosition()
 	{
-		clouds.MovePosition (new Vector2 (minX, clouds.position.y));
+		clouds.position = new Vector2 (minX, clouds.position.y);
 	}
 }

@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class IcebergController : MonoBehaviour {
-	
-	public Rigidbody2D iceberg;
+
 	private float timer = 1f;
+	private float yChangeTimer = 0.5f;
 	
 	private bool shouldMove = true;
 	
@@ -13,39 +13,49 @@ public class IcebergController : MonoBehaviour {
 	private float minAcceleration = 0.005f;	
 	private float maxAcceleration = 0.05f;
 	
-	private float maxX = 10f;
+	private float maxX = 13f;
 	private float minX = -10f;
-	
+
+	private float startY;
+	private float deltaY = 0.01f;
+
+	private Rigidbody2D iceberg;
 	private ArrayList collectedObjects = new ArrayList();
 	
 	void Start()
 	{
+		iceberg = this.rigidbody2D;
+		startY = iceberg.position.y;
 	}
 	
-	void Update () {
+	void FixedUpdate () {
 		if (shouldMove) {
-			moveIceberg ();
+			if (iceberg.position.x > maxX) {
+				shouldMove = false;
+
+				iceberg.position = new Vector2(minX, startY);
+				killCollectedObjects();
+			} else {
+				yChangeTimer -= Time.deltaTime;
+
+				if (yChangeTimer <= 0)
+				{
+					deltaY *= -1;
+					yChangeTimer = Random.Range (0.3f, 0.8f);
+				}
+
+				iceberg.MovePosition (new Vector2 (iceberg.position.x + acceleration, iceberg.position.y + deltaY));
+			}
 		} else {
 			timer -= Time.deltaTime;
 			
 			if (timer <= 0) {
-				timer = Random.Range (1, 5);
+				timer = Random.Range (1, 3);
 				acceleration = Random.Range( minAcceleration, maxAcceleration);
-				print ( acceleration);
+				//print ( acceleration);
 				Random.seed = 1;
 				shouldMove = true;
 			}
-		}
-	}
-	
-	void moveIceberg(){
-		if (iceberg.position.x > maxX) {
-			resetIcebergPosition();
-			killCollectedObjects();
-			
-			shouldMove = false;
-		} else {
-			iceberg.MovePosition (new Vector2 (iceberg.position.x + acceleration, iceberg.position.y));
 		}
 	}
 	
@@ -56,11 +66,6 @@ public class IcebergController : MonoBehaviour {
 			Destroy( obj );
 			collectedObjects.RemoveAt(0);
 		}
-	}
-	
-	void resetIcebergPosition()
-	{
-		iceberg.MovePosition (new Vector2 (minX, iceberg.position.y));
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) 
