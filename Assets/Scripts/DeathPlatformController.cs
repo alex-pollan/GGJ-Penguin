@@ -13,7 +13,7 @@ public class DeathPlatformController : MonoBehaviour {
 			GameController.GameOver.SetActive(true);
 
 			GameObject game = GameObject.Find("Game");
-			game.setActive(false);
+			game.SetActive(false);
 		}
 
 		Destroy(other.gameObject);
