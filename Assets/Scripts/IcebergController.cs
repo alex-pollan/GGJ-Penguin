@@ -72,4 +72,14 @@ public class IcebergController : MonoBehaviour {
 		}
 		print ("hit");
 	}
+
+	void OnCollisionExit2D(Collision2D coll) 
+	{
+		if (coll.gameObject.tag == "Food") 
+		{
+			collectedObjects.Remove (coll.gameObject);
+			ScoreController.scoreCount--;
+		}
+		print ("hit");
+	}
 }

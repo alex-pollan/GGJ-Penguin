@@ -12,13 +12,20 @@ public class PlayerController : MonoBehaviour {
 	public float speed;
 	public float tilt;
 	public Boundary boundary;
-	
+	private Animator animator;
+
+	void Start()
+	{
+		animator = GetComponent<Animator> ();
+	}
+
 	void FixedUpdate()
 	{
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 				
-		Vector2 movement = new Vector2 (moveHorizontal, -0.5f);
-		rigidbody2D.velocity = movement * speed;
+		animator.SetInteger ("Delta", Mathf.RoundToInt(moveHorizontal));
+
+		rigidbody2D.velocity = new Vector2 (moveHorizontal * speed, rigidbody2D.velocity.y);
 
 		rigidbody2D.AddForce(new Vector2 
 		(

@@ -463,7 +463,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
 --- !u!1 &828857607
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,6 +560,7 @@ GameObject:
   - 50: {fileID: 925659713}
   - 60: {fileID: 925659716}
   - 114: {fileID: 925659715}
+  - 95: {fileID: 925659714}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -616,6 +617,21 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!95 &925659714
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925659710}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 34d4cf8f53142e24fa83ac78f6d109dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 0
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &925659715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,7 +889,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1062516735}
   m_LocalRotation: {x: 0, y: 0, z: -.707106829, w: .707106829}
-  m_LocalPosition: {x: -8.05000019, y: 4, z: 0}
+  m_LocalPosition: {x: -9.28999996, y: 4, z: 0}
   m_LocalScale: {x: .400000006, y: .5, z: 1}
   m_Children: []
   m_Father: {fileID: 209182059}
@@ -1396,7 +1412,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1729828007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.5600004, y: -4.15999985, z: 0}
+  m_LocalPosition: {x: -6.07000017, y: -4.15999985, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 209182059}
@@ -1425,8 +1441,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 3.5151515, y: .522069931}
-  m_Center: {x: -.00612720475, y: .672877312}
+  m_Size: {x: 3.5151515, y: .49000001}
+  m_Center: {x: -.00612720475, y: .879999995}
 --- !u!114 &1729828012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,7 +1535,7 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
-  m_UseMotor: 1
+  m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 10
     m_MaximumMotorForce: 100
@@ -1613,7 +1629,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2143381164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.69000006, y: 4, z: 0}
+  m_LocalPosition: {x: -8.89000034, y: 4, z: 0}
   m_LocalScale: {x: .5, y: .600000024, z: 1}
   m_Children: []
   m_Father: {fileID: 209182059}
