@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class GameController : MonoBehaviour {
-	public static GameObject GameOver;
+	private static GameObject GameOver;
 
 	// Use this for initialization
 	void Start () {
@@ -14,5 +14,12 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public static void SetGameOver()
+	{
+		//game over
+		GameOver.SetActive(true);
+		GameObject.Find("Game").SetActive(false);
 	}
 }

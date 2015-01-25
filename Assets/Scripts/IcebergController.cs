@@ -68,23 +68,40 @@ public class IcebergController : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D coll) 
+//	void OnCollisionEnter2D(Collision2D coll) 
+//	{
+//		if (coll.gameObject.tag == "Food") 
+//		{
+//			collectedObjects.Add (coll.gameObject);
+//			ScoreController.scoreCount++;
+//		}
+//	}
+//
+//	void OnCollisionExit2D(Collision2D coll) 
+//	{
+//		if (coll.gameObject.tag == "Food") 
+//		{
+//			collectedObjects.Remove (coll.gameObject);
+//			ScoreController.scoreCount--;
+//		}
+//	}
+
+	void OnTriggerEnter2D(Collider2D coll) 
 	{
 		if (coll.gameObject.tag == "Food") 
 		{
 			collectedObjects.Add (coll.gameObject);
-			ScoreController.scoreCount++;
+			ScoreController.scoreCount+=2;
 		}
 		print ("hit");
 	}
-
-	void OnCollisionExit2D(Collision2D coll) 
+	
+	void OnTriggerExit2D(Collider2D coll) 
 	{
 		if (coll.gameObject.tag == "Food") 
 		{
 			collectedObjects.Remove (coll.gameObject);
-			ScoreController.scoreCount--;
+			ScoreController.scoreCount-=2;
 		}
-		print ("hit");
 	}
 }

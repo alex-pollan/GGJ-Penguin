@@ -7,7 +7,9 @@ public class ScoreController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (scoreCount <= -100) {
+			GameController.SetGameOver();
+		}
 	}
 	
 	void OnGUI()
