@@ -2,10 +2,12 @@
 using System.Collections;
 
 public class GameController : MonoBehaviour {
+	public static GameObject GameOver;
 
 	// Use this for initialization
 	void Start () {
-		GameObject.Find("GameOver").SetActive(false);
+		GameOver = GameObject.Find ("GameOver");
+		GameOver.SetActive(false);
 		this.gameObject.SetActive (false);
 	}
 	

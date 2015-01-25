@@ -10,10 +10,10 @@ public class DeathPlatformController : MonoBehaviour {
 		if (other.gameObject.tag == "Penguin") 
 		{
 			//game over
-			var gameOver = GameObject.Find("GameOver");
-			print("Gameover is null: " + (gameOver == null));
-			gameOver.SetActive(true);
-			GameObject.Find("Game").SetActive(false);
+			GameController.GameOver.SetActive(true);
+
+			GameObject game = GameObject.Find("Game");
+			game.setActive(false);
 		}
 
 		Destroy(other.gameObject);
