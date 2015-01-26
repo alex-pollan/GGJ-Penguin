@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿#if (UNITY_IPHONE || UNITY_ANDROID || UNITY_WP8 || UNITY_RT)
+#define USE_ACCELEROMETER
+#endif
+using UnityEngine;
 using System.Collections;
 
 [System.Serializable]
@@ -21,8 +24,9 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-				
+		float moveHorizontal;
+		GetHorizontalMovement(out moveHorizontal);
+						
 		animator.SetInteger ("Delta", Mathf.RoundToInt(moveHorizontal));
 
 		rigidbody2D.velocity = new Vector2 (moveHorizontal * speed, rigidbody2D.velocity.y);
@@ -36,4 +40,16 @@ public class PlayerController : MonoBehaviour {
 		rigidbody2D.rotation = rigidbody2D.velocity.x * tilt;
 
 	}
+
+#if USE_ACCELEROMETER
+	private void GetHorizontalMovement(out float move)
+	{
+		move = Input.acceleration.x;
+	}
+#else
+	private void GetHorizontalMovement(out float move)
+	{
+		move = Input.GetAxis ("Horizontal");
+	}
+#endif
 }
